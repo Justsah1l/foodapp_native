@@ -3,14 +3,14 @@ import Colors from '../constants/Colors';
 import products from '@/assets/data/products';
 import { Product } from '../type';
 import {Link} from 'expo-router';
-import Proddetail from './productdetail'
+import Proddetail from './[id]'
 type prodtype = {
   prod:Product;
 };
 
 const Prodlist = ({prod}: prodtype) => {
   return(  
-<Link href={'/productdetail'} asChild>
+<Link href={`/${prod.id}`} asChild>
   <Pressable style={styles.container}>
     <Image resizeMode='contain' source={{ uri: prod.image || 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/peperoni.png' }} style={styles.image}/>
 <Text style={ styles.name}>{prod.name}</Text>
