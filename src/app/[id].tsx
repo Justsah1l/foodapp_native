@@ -3,11 +3,13 @@ import { View, Text,StyleSheet,Image,Pressable ,Button } from "react-native";
 import products from "@/assets/data/products";
 import {useFonts, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { useState } from "react";
-
-const sizes = ['S','M','L','XL'];
+import { useCart } from "../provider/cartpro";
+import { PizzaSize } from "@/assets/Food Ordering Asset bundle/types";
+const sizes:PizzaSize[] = ['S','M','L','XL'];
 
 const Proddetail =  () =>{
-    const [selectedsize,setselectedsize] = useState('M');
+    const {addItem} = useCart();
+    const [selectedsize,setselectedsize] = useState<PizzaSize>('M');
     let [fontsLoaded, fontError] = useFonts({
         Oswald_400Regular,
       });
@@ -37,7 +39,10 @@ return(
     <Text style={style.txt}>{prod?.name}</Text>
     <Text style={style.price}>$ {prod?.price}</Text>
     <Pressable onPress={() =>{
-
+        if(!prod){
+            return;
+        }
+addItem(prod,selectedsize);
         }} >
         <View style={style.buttonmain}>
             <Text style={style.buttontext}>Add to cart</Text>

@@ -34,11 +34,11 @@ export default function TabLayout() {
           headerTitleAlign:'center',
           tabBarIcon: ({ color }) => <TabBarIcon name="cutlery" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/cartscreen" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="user"
+                    name="shopping-cart"
                     size={25}
                     color={Colors[colorScheme ?? 'light'].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}

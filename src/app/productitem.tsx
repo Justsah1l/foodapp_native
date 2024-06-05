@@ -3,7 +3,8 @@ import Colors from '../constants/Colors';
 import products from '@/assets/data/products';
 import { Product } from '../type';
 import {Link} from 'expo-router';
-import Proddetail from './[id]'
+import Proddetail from './[id]';
+
 type prodtype = {
   prod:Product;
 };
@@ -12,7 +13,9 @@ const Prodlist = ({prod}: prodtype) => {
   return(  
 <Link href={`/${prod.id}`} asChild>
   <Pressable style={styles.container}>
+   
     <Image resizeMode='contain' source={{ uri: prod.image || 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/peperoni.png' }} style={styles.image}/>
+
 <Text style={ styles.name}>{prod.name}</Text>
 <Text style={styles.price}>${prod.price}</Text>
 </Pressable>
@@ -36,19 +39,22 @@ return(
 
 
 const styles = StyleSheet.create({
-  name:{fontSize:20,color:"white" , fontWeight:"bold"},
+  name:{fontSize:20,color:"black" , fontWeight:"bold"},
   price:{color:Colors.light.tint, fontSize:17 , 
   fontWeight:"400",
   marginVertical:14,
 },
 image:{width:'100%',
   aspectRatio:1,
-
+  elevation:70,
+  shadowColor:'black',
   alignSelf:'center',
   marginBottom:17,
 
 },
   container: {
+    
+    backgroundColor:"#dedede",
     borderWidth:1,
     borderRadius:10,
     borderColor:'white',
@@ -67,4 +73,5 @@ image:{width:'100%',
   separator: {
    
   },
+  
 });
